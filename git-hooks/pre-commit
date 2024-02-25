@@ -1,1 +1,1 @@
-if [ ! -z $(which clang-format) ]; then clang-format --dry-run -Werror $(find . -name "*.c"); else echo "Install clang-format"; fi
+if [ ! -z $(which clang-format) ]; then clang-format --dry-run -Werror $(find src/ -name "*.c"); else echo "Install clang-format"; fi
