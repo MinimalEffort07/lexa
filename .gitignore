@@ -2,3 +2,4 @@ a.out
 lexer
 build
 .gdb_history
+.cache

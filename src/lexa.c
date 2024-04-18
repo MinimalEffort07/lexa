@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,19 +11,21 @@ int getWordLength(char* word) {
     if(NULL == word)
         return 0;
 
-    char* original = word;
+    uint32_t count = 0;
 
-    while(isalpha(*(word++)))
-        ;
+    while(word && isalpha(*word)) {
+        word++;
+        count++;
+    }
 
-    return (ptrdiff_t)(word - original) - 1;
+    return count;
 }
 
 int main(int argc, char** argv) {
 
     int ret = -1;
 
-    if(argc != 2) {
+    if(2 != argc) {
         printf("Usage: %s <file to analyse>\n", argv[0]);
         return ret;
     }
@@ -52,7 +55,7 @@ int main(int argc, char** argv) {
     printf("The size of %s is %ld bytes\n", argv[1], sInput);
 
     // +1 To provide space for the NULL byte
-    unsigned char* contentsFile = calloc(sInput + 1, sizeof(unsigned char));
+    char* contentsFile = calloc(sInput + 1, sizeof(char));
     if(NULL == contentsFile) {
         puts("Out of memory, couldn't read in file contents");
         return ret;
