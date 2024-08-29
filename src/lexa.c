@@ -1,3 +1,13 @@
+/* lexa is a lexical analyser for the C programming language. 
+ *
+ * Lexa reads a C source file, meaningfully groups characters into 'lexemes'
+ * and the produces as output a token for each lexeme.
+ *
+ * Tokens are composed of a:
+ * - 'Token Name' which is an abstract symbol used for syntax analysis by the parser 
+ * - Pointer into the symbol table to provide additional information about that lexeme.
+ */
+
 #include <ctype.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -5,15 +15,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Largest accepted input file size in bytes */
 #define MAX_INPUT_FILE_SIZE 10000
 
-int getWordLength(char* word) {
+/**
+ * @brief Obtains the length of a lexeme provided its a valid lexeme
+ *
+ * @param word [in] - lexeme to find length of
+ * @param cmpFn [in] - Function pointer used to verify that each byte in the 
+ * lexeme from the starting address to the first encounter of a whitespace 
+ * character conforms to the requirements of a lexeme. Commonly this will be
+ * a function like isdigit(), isalpha(), isalnum() etc. 
+ *
+ * @return Size of word, if its a valid lexeme or 0 otherwise
+ */
+int getLexemeLength(char* word, int (*cmpFn)(int character)) {
     if(NULL == word)
         return 0;
 
     uint32_t count = 0;
 
-    while(word && isalpha(*word)) {
+    while(word && cmpFn(*word)) {
         word++;
         count++;
     }
@@ -80,24 +102,22 @@ int main(int argc, char** argv) {
     size_t nSymbols    = 0;
     char** symbolTable = NULL;
 
-    for(int i = 0; i < (sInput + 1); i++) {
+    for(int i = 0; i < sInput; i++) {
         if(isblank(contentsFile[i]))
             continue;
 
         if(isalpha(contentsFile[i])) {
-            int sWord = getWordLength(&contentsFile[i]);
+            int sWord = getLexemeLength(&contentsFile[i], isalpha);
             if(0 == sWord) {
                 puts("Error getting length of symbol");
                 goto symbolTableCleanup;
             }
 
-            // printf("SymbolTable before: %p\n", symbolTable);
             symbolTable = reallocarray(symbolTable, ++nSymbols, sizeof(char*));
             if(NULL == symbolTable) {
                 puts("Out of memory, couldn't expand symbol table");
                 goto symbolTableCleanup;
             }
-            // printf("SymbolTable after: %p\n", symbolTable);
 
             symbolTable[nSymbols - 1] = calloc(sWord + 1, sizeof(char));
             if(NULL == symbolTable[nSymbols - 1]) {
@@ -114,6 +134,13 @@ int main(int argc, char** argv) {
             printf("Symbol stored is: %s\n", symbolTable[nSymbols - 1]);
             i += sWord;
             continue;
+
+        } else if(isdigit(contentsFile[i])) {
+            int sWord = getLexemeLength(&contentsFile[i], isdigit);
+            if(0 == sWord) {
+                puts("Error getting length of symbol");
+                goto symbolTableCleanup;
+            }
         }
     }
 

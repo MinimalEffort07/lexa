@@ -1,9 +1,12 @@
 # LeXa
-A lexer.
+LeXa (lx) is a Lexical Analyser for the C programming language. It ingests C
+source code, breaks words up into lexemes and then outputs tokens of those 
+lexemes which contain a Token Name and optionally a Token Attribute.
 
 ## Dependencies
 - cmake
 - gcc
+- doxygen
 
 ## Building
 ```bash
@@ -17,6 +20,8 @@ cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS
 cmake --build build
 ```
 
-## Overview
-lexa is a lexical analyser. It breaks input files up into lexemes. A lexeme is 
-within lexa is defined as a string of alphanumeric characters.
+### Generating Docs
+```
+doxygen
+```
+

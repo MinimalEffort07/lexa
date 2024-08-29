@@ -6,12 +6,12 @@ project(LeXa)
 
 add_executable(
     lx
-    "${CMAKE_SOURCE_DIR}/src/lexa.c"
+    "${CMAKE_CURRENT_LIST_DIR}/src/lexa.c"
 )
 
 target_include_directories(
     lx
     PUBLIC
-    "${CMAKE_SOURCE_DIR}"
-    "${CMAKE_SOURCE_DIR}/include"
+    "${CMAKE_CURRENT_LIST_DIR}"
+    "${CMAKE_CURRENT_LIST_DIR}/include"
 )

@@ -1,8 +1,8 @@
 #ifndef LEXEME_IDS_H_
 #define LEXEME_IDS_H_
 
-/**
- *auto	else	long	switch
+/*
+auto	else	long	switch
 break	enum	register	typedef
 case	extern	return	union
 char	float	short	unsigned
@@ -11,6 +11,10 @@ continue	goto	sizeof	volatile
 default	if	static	while
 do	int	struct	_Packed
 double
+ */
+
+/**
+ * @brief All valid lexemes that lexa recognizes
  */
 typedef enum _lexeme_ids {
     // Reserved Keywords
@@ -62,22 +66,21 @@ typedef enum _lexeme_ids {
     PLUS,                   // +
     EXCLAMATION,            // !
     TILDE,                  // ~
-    AMPERSAND,
-    DEREFERENCE,
-    MULTIPLACATION,
-    DIVISION,
-    PERCENT,
-    BITWISE_LEFT_SHIFT,
-    BITWISE_RIGHT_SHIFT,
-    LESS_THAN,
-    GREATER_THAN,
-    LESS_THAN_OR_EQUAL,
-    GREATER_THAN_OR_EQUAL,
-    EQUALITY,
-    NOT_EQUAL_TO,
-    LOGICAL_AND,
-    EXCLUSIVE_OR,
-    INCLUSIVE_OR,
+    AMPERSAND,              // &
+    DEREFERENCE,            // *
+    MULTIPLACATION,         // *
+    DIVISION,               // /
+    PERCENT,                // %
+    BITWISE_LEFT_SHIFT,     // <<
+    BITWISE_RIGHT_SHIFT,    // >> 
+    LESS_THAN,              // <
+    GREATER_THAN,           // >
+    LESS_THAN_OR_EQUAL,     // <=
+    GREATER_THAN_OR_EQUAL,  // >=
+    EQUALITY,               // ==
+    NOT_EQUAL_TO,           // !=
+    EXCLUSIVE_OR,           // ^
+    INCLUSIVE_OR,           // |
     LOGICAL_AND,
     LOGICAL_OR,
     EQUAL_TO,

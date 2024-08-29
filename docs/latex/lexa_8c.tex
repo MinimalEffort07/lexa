@@ -1,0 +1,69 @@
+\hypertarget{lexa_8c}{}\doxysection{src/lexa.c File Reference}
+\label{lexa_8c}\index{src/lexa.c@{src/lexa.c}}
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for lexa.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lexa_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lexa_8c_ada39c75967a3426696c17b8328d665be}{MAX\+\_\+\+INPUT\+\_\+\+FILE\+\_\+\+SIZE}}~10000
+\begin{DoxyCompactList}\small\item\em Largest accepted input file size in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{lexa_8c_a4501a771cec2cd2e80c72d35b6356ae9}{get\+Lexeme\+Length}} (char $\ast$word, int($\ast$cmp\+Fn)(int character))
+\begin{DoxyCompactList}\small\item\em Obtains the length of a lexeme provided its a valid lexeme. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lexa_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lexa_8c_ada39c75967a3426696c17b8328d665be}\label{lexa_8c_ada39c75967a3426696c17b8328d665be}} 
+\index{lexa.c@{lexa.c}!MAX\_INPUT\_FILE\_SIZE@{MAX\_INPUT\_FILE\_SIZE}}
+\index{MAX\_INPUT\_FILE\_SIZE@{MAX\_INPUT\_FILE\_SIZE}!lexa.c@{lexa.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_INPUT\_FILE\_SIZE}{MAX\_INPUT\_FILE\_SIZE}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+INPUT\+\_\+\+FILE\+\_\+\+SIZE~10000}
+
+
+
+Largest accepted input file size in bytes. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lexa_8c_a4501a771cec2cd2e80c72d35b6356ae9}\label{lexa_8c_a4501a771cec2cd2e80c72d35b6356ae9}} 
+\index{lexa.c@{lexa.c}!getLexemeLength@{getLexemeLength}}
+\index{getLexemeLength@{getLexemeLength}!lexa.c@{lexa.c}}
+\doxysubsubsection{\texorpdfstring{getLexemeLength()}{getLexemeLength()}}
+{\footnotesize\ttfamily int get\+Lexeme\+Length (\begin{DoxyParamCaption}\item[{char $\ast$}]{word,  }\item[{int($\ast$)(int character)}]{cmp\+Fn }\end{DoxyParamCaption})}
+
+
+
+Obtains the length of a lexeme provided its a valid lexeme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & \mbox{[}in\mbox{]} -\/ lexeme to find length of \\
+\hline
+{\em cmp\+Fn} & \mbox{[}in\mbox{]} -\/ Function pointer used to verify that each byte in the lexeme from the starting address to the first encounter of a whitespace character conforms to the requirements of a lexeme. Commonly this will be a function like isdigit(), isalpha(), isalnum() etc.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of word, if its a valid lexeme or 0 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lexa_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{lexa_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{lexa.c@{lexa.c}!main@{main}}
+\index{main@{main}!lexa.c@{lexa.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+

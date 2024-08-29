@@ -1,0 +1,21 @@
+A lexer.\hypertarget{md_README_autotoc_md1}{}\doxysection{Dependencies}\label{md_README_autotoc_md1}
+
+\begin{DoxyItemize}
+\item cmake
+\item gcc
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md2}{}\doxysection{Building}\label{md_README_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake -\/Bbuild -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{cmake -\/-\/build build}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Building with support for clangd}\label{md_README_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake -\/Bbuild -\/DCMAKE\_BUILD\_TYPE=Release -\/DCMAKE\_EXPORT\_COMPILE\_COMMANDS}
+\DoxyCodeLine{cmake -\/-\/build build}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md4}{}\doxysection{Overview}\label{md_README_autotoc_md4}
+lexa is a lexical analyser. It breaks input files up into lexemes. A lexeme is within lexa is defined as a string of alphanumeric characters. 
